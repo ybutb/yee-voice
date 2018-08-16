@@ -4,3 +4,4 @@ npm-debug.log
 dist/*
 !dist/.gitkeep
 logs/error.log
+node_modules
