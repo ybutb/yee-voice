@@ -1,0 +1,50 @@
+{
+  "serviceApiKeyHash": "",
+  "logPath": "logs/error.log",
+  "speechServiceModelDir" : "config/pocketsphinx/compiled/",
+  "voiceControl": {
+    "keyWord": "FRIEND",
+    "commands": {
+      "lightOn": "turn on the light",
+      "lightOff": "turn off the light",
+      "lightColor": "make the light",
+      "blue": "blue",
+      "red": "red",
+      "yellow": "yellow",
+      "green": "green",
+      "white": "white",
+      "purple": "purple",
+      "pink": "pink",
+      "orange": "orange",
+      "bright": "bright",
+      "dark": "dark"
+    }
+  },
+  "yeeClient": {
+    "bulbs": [
+      {
+        "LOCATION": "yeelight://192.168.1.142:55443",
+        "ID": "7C:49:EB:10:13:3E",
+        "SUPPORT": "get_prop set_default set_power toggle set_bright start_cf stop_cf set_scene cron_add cron_get cron_del set_ct_abx set_rgb set_hsv set_adjust set_music set_name",
+        "NAME": "Yeelight_color_1",
+        "MODEL": "color"
+      }
+    ],
+    "keywordIdMap":
+      {"light": "7C:49:EB:10:13:3E"},
+    "keywordFunctionMap": {
+      "on": "setDeviceOn",
+      "off": "setDeviceOff",
+      "bright": "setDeviceBright",
+      "dark": "setDeviceDark",
+      "red": "setDeviceRed",
+      "blue": "setDeviceBlue",
+      "white": "setDeviceWhite",
+      "yellow": "setDeviceYellow",
+      "orange": "setDeviceOrange",
+      "pink": "setDevicePink",
+      "green": "setDeviceGreen",
+      "purple": "setDevicePurple"
+    }
+  }
+}

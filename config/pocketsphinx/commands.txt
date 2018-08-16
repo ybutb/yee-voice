@@ -1,0 +1,14 @@
+friend
+turn on the light
+turn off the light
+make the light
+blue
+red
+yellow
+green
+white
+purple
+pink
+orange
+bright
+dark
