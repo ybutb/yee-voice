@@ -1,26 +1,71 @@
-FROM resin/rpi-raspbian
+ARG parent_image
+
+FROM $parent_image
 
 # Install pulse audio / development packages
-#RUN sudo apt-get install g++ cmake gstreamer0.10-pulseaudio libao4 libasound2-plugins libgconfmm-2.6-1c2 libglademm-2.4-1c2a libpulse-dev libpulse-mainloop-glib0 libpulse-mainloop-glib0-dbg libpulse0 libpulse0-dbg libsox-fmt-pulse paman paprefs pavucontrol pavumeter pulseaudio pulseaudio-dbg pulseaudio-esound-compat pulseaudio-esound-compat-dbg pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-jack pulseaudio-module-lirc pulseaudio-module-lirc-dbg pulseaudio-module-x11 pulseaudio-module-zeroconf pulseaudio-module-zeroconf-dbg pulseaudio-utils oss-compat -y
+RUN apt-get update && apt-get install g++ cmake libao4 libasound2-plugins \
+    libpulse-dev libpulse0 libsox-fmt-pulse paman paprefs \
+    pavucontrol pavumeter pulseaudio pulseaudio-module-bluetooth \
+    pulseaudio-module-gconf pulseaudio-module-jack pulseaudio-module-lirc \
+    pulseaudio-module-zeroconf pulseaudio-utils oss-compat git alsa-base alsa-utils -y
 
 # Setting up ALSA
-#RUN sudo \cp -pf /etc/asound.conf /etc/asound.conf.ORIG
-#    echo 'pcm.pulse {
-#        type pulse
-#    }
-#
-#    ctl.pulse {
-#        type pulse
-#    }
-#
-#    pcm.!default {
-#        type pulse
-#    }
-#
-#    ctl.!default {
-#        type pulse
-#    }' | sudo tee /etc/asound.conf
-#
+COPY asound.conf .
+
+RUN cp -pf ./asound.conf /etc/asound.conf
+
 # Install sphinxbase
+RUN apt-get install autoconf libtool automake bison python-dev swig -y
+
+RUN git clone https://github.com/cmusphinx/sphinxbase.git \
+    && cd sphinxbase \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && make install \
+    && cd ..
+
 # Install pocketsphinx
-#
+RUN git clone https://github.com/cmusphinx/pocketsphinx.git \
+    && cd pocketsphinx \
+    && ./autogen.sh \
+    && ./configure \
+    && make clean all \
+    && make check \
+    && make install \
+    && cd ..
+
+ENV PYTHONPATH /usr/local/lib/python2.7/site-packages
+
+# Install nodejs / npm
+RUN apt-get install npm -y
+
+RUN export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
+    && pkg-config --modversion pocketsphinx
+
+# Installing proper cmake version
+RUN mkdir ~/temp \
+    && cd ~/temp \
+    && wget https://cmake.org/files/v3.12/cmake-3.12.3.tar.gz \
+    && tar -xzvf cmake-3.12.3.tar.gz \
+    && cd cmake-3.12.3/ \
+    && ./bootstrap \
+    && make -j4 \
+    && make install
+
+# Install proper swig version
+RUN cd ~/temp \
+    && git clone https://github.com/swig/swig.git \
+    && cd swig \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && make install \
+    && apt remove swig2.0 -y
+
+WORKDIR /var/www/localhost
+
+RUN usermod -aG audio root
+
+#CMD ["npm", "run", "run-dev"]
+CMD ["npm", "run", "run-dev"]

@@ -18,7 +18,7 @@ const logger = () => {
         let currentTime = Date.now();
 
         fs.appendFile(path, '[' + currentTime + '] ' + JSON.stringify(message) + "\n", function (err) {
-            if (err) throw err;
+            if (err) console.log(err);
         });
     };
 

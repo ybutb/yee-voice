@@ -7,11 +7,7 @@
 const YeelightSearch = require('yeelight-wifi');
 const config  = require("../../../config/config.json");
 
-/**
- *
- */
 class YeeBulb {
-
 
 	/**
 	 * Yee device search client.

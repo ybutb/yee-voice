@@ -2,6 +2,8 @@
   "serviceApiKeyHash": "",
   "logPath": "logs/error.log",
   "speechServiceModelDir" : "config/pocketsphinx/compiled/",
+  "projectPath": "/var/www/localhost/",
+  "micDeviceName": "hw:0,0",
   "voiceControl": {
     "keyWord": "FRIEND",
     "commands": {

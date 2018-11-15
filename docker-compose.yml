@@ -1,0 +1,31 @@
+version: "3"
+services:
+  yee-voice-recognition-server:
+    container_name: yee-voice-recognition-server
+    build: .
+    image: yee-voice
+    volumes:
+      - ./:/var/www/localhost
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - LOG_LEVEL=INFO
+      - DISPLAY=unix:$DISPLAY
+      - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
+    devices:
+      - "/dev/snd:/dev/snd"
+  yee-voice-recognition-server-dev:
+    container_name: yee-voice-recognition-server-dev
+    build: .
+    image: yee-voice
+    volumes:
+      - ./:/var/www/localhost
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native
+      - /dev/snd:/dev/snd
+      - ~/.config/pulse/cookie:/root/.config/pulse/cookie
+    environment:
+      - LOG_LEVEL=DEBUG
+      - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
+      - DISPLAY=unix:$DISPLAY
+    devices:
+      - "/dev/snd:/dev/snd"

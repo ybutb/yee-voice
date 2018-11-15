@@ -1,5 +1,5 @@
 /**
- * Yeelight device class.
+ * Yeelight api client class.
  *
  * @package yee-voice
  * @author Ivan Ovcharenko ybutb88@gmail.com

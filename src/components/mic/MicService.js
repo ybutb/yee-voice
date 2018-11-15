@@ -6,10 +6,22 @@
  */
 
 const MicToSpeech = require('mic-to-speech');
+const config  = require("../../../config/config.json");
 
 class MicService {
+
+	/**
+	 * Callback to handle microphone 'speech' event.
+	 *
+	 * @type {callback}
+	 */
 	rawDataHandlingCallback = null;
 
+	/**
+	 * Microphone instance.
+	 *
+	 * @type {SpeechExtractor}
+	 */
 	micInstance = null;
 
 	/**
@@ -31,7 +43,13 @@ class MicService {
 	 * @return void
 	 */
 	init() {
-		this.micInstance = new MicToSpeech({debug: false, channels: 1, sampleRateHertz: 16000});
+		let micSettings = {
+			sampleRateHertz: 16000,
+			channels: 2,
+			device: config.micDeviceName
+		};
+
+		this.micInstance = new MicToSpeech(micSettings);
 
 		console.log("initializing microphone");
 
@@ -47,7 +65,9 @@ class MicService {
 	}
 
 	/**
+	 * Resumes microphone to continue listen the environment.
 	 *
+	 * @return void
 	 */
 	resumeMic() {
 		console.log('Resuming microphone...');

@@ -12,11 +12,13 @@ const logger = require( 'logger' );
 const modeldir = appConfig.speechServiceModelDir;
 
 let config = new ps.Decoder.defaultConfig();
-config.setString("-hmm", "/var/www/yee-voice/" + modeldir + "acoustic");
-config.setString("-dict", "/var/www/yee-voice/" + modeldir + "3400.dic");
-config.setString("-lm", "/var/www/yee-voice/" + modeldir + "3400.lm");
+
+config.setString("-hmm", appConfig.projectPath + modeldir + "acoustic");
+config.setString("-dict", appConfig.projectPath + modeldir + "3400.dic");
+config.setString("-lm", appConfig.projectPath + modeldir + "3400.lm");
 config.setBoolean('-remove_noise', false);
 config.setBoolean('-remove_silence', false);
+
 let decoder = new ps.Decoder(config);
 
 class SpeechRecognitionService {
@@ -30,9 +32,13 @@ class SpeechRecognitionService {
 	processRawdata(rawData) {
 		return new Promise((resolve, reject) => {
 			console.log("started recognizing audio...");
-			console.log(JSON.stringify(config));
 			decoder.startUtt();
+			console.log("2");
+
 			decoder.processRaw(rawData, false, false);
+
+			console.log("3");
+
 			decoder.endUtt();
 
 			let result = decoder.hyp();
