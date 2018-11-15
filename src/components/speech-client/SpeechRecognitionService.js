@@ -18,6 +18,7 @@ config.setString("-dict", appConfig.projectPath + modeldir + "3400.dic");
 config.setString("-lm", appConfig.projectPath + modeldir + "3400.lm");
 config.setBoolean('-remove_noise', false);
 config.setBoolean('-remove_silence', false);
+// config.setFloat("-samprate", 48000.0);
 
 let decoder = new ps.Decoder(config);
 
@@ -33,12 +34,7 @@ class SpeechRecognitionService {
 		return new Promise((resolve, reject) => {
 			console.log("started recognizing audio...");
 			decoder.startUtt();
-			console.log("2");
-
 			decoder.processRaw(rawData, false, false);
-
-			console.log("3");
-
 			decoder.endUtt();
 
 			let result = decoder.hyp();

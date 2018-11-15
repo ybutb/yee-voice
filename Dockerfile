@@ -67,5 +67,4 @@ WORKDIR /var/www/localhost
 
 RUN usermod -aG audio root
 
-#CMD ["npm", "run", "run-dev"]
-CMD ["npm", "run", "run-dev"]
+CMD ["npm", "run", "run"]

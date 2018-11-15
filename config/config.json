@@ -5,7 +5,7 @@
   "projectPath": "/var/www/localhost/",
   "micDeviceName": "hw:0,0",
   "voiceControl": {
-    "keyWord": "FRIEND",
+    "keyWord": "friend",
     "commands": {
       "lightOn": "turn on the light",
       "lightOff": "turn off the light",
