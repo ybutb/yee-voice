@@ -6,11 +6,8 @@ services:
     image: yee-voice
     volumes:
       - ./:/var/www/localhost
-      - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
       - LOG_LEVEL=INFO
-      - DISPLAY=unix:$DISPLAY
-      - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
     devices:
       - "/dev/snd:/dev/snd"
   yee-voice-recognition-server-dev:
