@@ -7,3 +7,4 @@ logs/error.log
 node_modules
 pulse
 core
+pulse*

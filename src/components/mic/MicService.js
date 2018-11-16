@@ -44,9 +44,9 @@ class MicService {
 	 */
 	init() {
 		let micSettings = {
-			sampleRateHertz: 16000,
-			channels: 2,
-			device: config.micDeviceName
+			sampleRateHertz: Math.floor(config.micDevice.rate),
+			channels: config.micDevice.channels,
+			device: config.micDevice.name
 		};
 
 		this.micInstance = new MicToSpeech(micSettings);

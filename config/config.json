@@ -3,7 +3,11 @@
   "logPath": "logs/error.log",
   "speechServiceModelDir" : "config/pocketsphinx/compiled/",
   "projectPath": "/var/www/localhost/",
-  "micDeviceName": "hw:0,0",
+  "micDevice": {
+    "name": "hw:0,0",
+    "rate": 16000,
+    "channels": 2
+  },
   "voiceControl": {
     "keyWord": "friend",
     "commands": {
