@@ -17,6 +17,9 @@ docker-build-prod:
 
 build: docker-build-prod
 
+run:
+	@docker-compose up yee-voice-recognition-server
+
 run-dev:
 	@docker-compose up yee-voice-recognition-server-dev
 

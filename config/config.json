@@ -4,9 +4,9 @@
   "speechServiceModelDir" : "config/pocketsphinx/compiled/",
   "projectPath": "/var/www/localhost/",
   "micDevice": {
-    "name": "hw:0,0",
+    "name": "hw:1,0",
     "rate": 16000,
-    "channels": 2
+    "channels": 1
   },
   "voiceControl": {
     "keyWord": "friend",
