@@ -1,5 +1,5 @@
 imagename=yee-voice
-parent_image_arm=resin/raspberrypi3-debian
+parent_image_arm=resin/raspberrypi3-debian:jessie
 parent_image_x86=node:6
 
 clean:
@@ -13,7 +13,7 @@ docker-build-dev:
 
 docker-build-prod:
 	@docker rm -f $(service) > /dev/null 2>&1 || exit 0
-	@docker build -t --build-arg parent_image=$(parent_image_arm) $(imagename) .
+	@docker build -t $(imagename) --build-arg parent_image=$(parent_image_arm) .
 
 build: docker-build-prod
 

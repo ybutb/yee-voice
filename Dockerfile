@@ -2,6 +2,8 @@ ARG parent_image
 
 FROM $parent_image
 
+RUN ["cross-build-start"]
+
 # Install pulse audio / development packages
 RUN apt-get update && apt-get install g++ cmake libao4 libasound2-plugins \
     libpulse-dev libpulse0 libsox-fmt-pulse paman paprefs \
@@ -15,7 +17,7 @@ COPY asound.conf .
 RUN cp -pf ./asound.conf /etc/asound.conf
 
 # Install sphinxbase
-RUN apt-get install autoconf libtool automake bison python-dev swig -y
+RUN apt-get install autoconf libtool automake bison python-dev swig build-essential -y
 
 RUN git clone https://github.com/cmusphinx/sphinxbase.git \
     && cd sphinxbase \
@@ -66,5 +68,7 @@ RUN cd ~/temp \
 WORKDIR /var/www/localhost
 
 RUN usermod -aG audio root
+
+RUN ["cross-build-end"]
 
 CMD ["npm", "run", "run"]
