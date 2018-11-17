@@ -43,6 +43,8 @@ RUN apt-get install npm -y
 RUN export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig \
     && pkg-config --modversion pocketsphinx
 
+RUN apt-get install wget -y
+
 # Installing proper cmake version
 RUN mkdir ~/temp \
     && cd ~/temp \
