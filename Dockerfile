@@ -2,8 +2,6 @@ ARG parent_image
 
 FROM $parent_image
 
-RUN ["cross-build-start"]
-
 # Install pulse audio / development packages
 RUN apt-get update && apt-get install g++ cmake libao4 libasound2-plugins \
     libpulse-dev libpulse0 libsox-fmt-pulse paman paprefs \
@@ -68,7 +66,5 @@ RUN cd ~/temp \
 WORKDIR /var/www/localhost
 
 RUN usermod -aG audio root
-
-RUN ["cross-build-end"]
 
 CMD ["npm", "run", "run"]
