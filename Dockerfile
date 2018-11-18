@@ -69,4 +69,7 @@ WORKDIR /var/www/localhost
 
 RUN usermod -aG audio root
 
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
+    && apt-get install -y nodejs
+
 CMD ["npm", "run", "run"]
