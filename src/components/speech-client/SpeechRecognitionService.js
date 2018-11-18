@@ -45,17 +45,17 @@ class SpeechRecognitionService {
 				decoder.endUtt();
 
 				let result = decoder.hyp();
+
+				if (null === result) {
+					reject(new Error("Failed to recognize mic input..."));
+				}
+
+				resolve(result.hypstr);
 			}
 			catch(err) {
 				logger.log(err);
 				reject(new Error("Failed to recognize mic input. Error: " + err));
 			}
-
-			if (null === result) {
-				reject(new Error("Failed to recognize mic input..."));
-			}
-
-			resolve(result.hypstr);
 		});
 	}
 }
