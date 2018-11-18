@@ -14,11 +14,57 @@ const logger = () => {
 
     const path = config.logPath;
 
-    pub.log = (message) => {
-        let currentTime = Date.now();
+	/**
+     * Logs message to error log.
+     *
+	 * @param message
+     *
+     * @return void
+	 */
+	pub.log = (message) => {
+		if (!fs.existsSync(path)) {
+			createLogFile().then((result) => writeToLogFile(message));
+			return;
+		}
 
-        fs.appendFile(path, '[' + currentTime + '] ' + JSON.stringify(message) + "\n", function (err) {
-            if (err) console.log(err);
+		writeToLogFile(message);
+    };
+
+	/**
+     * Writes message to log file.
+     *
+	 * @param {string} message
+     *
+     * @return void
+	 */
+	const writeToLogFile = (message) => {
+		fs.appendFile(path, '[' + currentTime + '] ' + JSON.stringify(message) + "\n", function (err) {
+			if (err) {
+				console.log(err);
+				reject(err);
+			}
+		});
+    };
+
+	/**
+     * Creates logs file and directory.
+     *
+     * @return {Promise}
+	 */
+	const createLogFile = () => {
+        return new Promise((resolve, reject) => {
+            const logFilePath = '../' + config.logPath;
+
+	        fs.writeFile(logFilePath, '', (err) => {
+	            const errorMessage = "Error occured during creating of log file. File path: " + logFilePath;
+
+		        if (err)  {
+			        console.log(errorMessage);
+			        return reject(errorMessage);
+		        }
+
+		        return resolve();
+	        });
         });
     };
 

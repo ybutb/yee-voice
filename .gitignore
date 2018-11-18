@@ -3,6 +3,7 @@ npm-debug.log
 .env
 dist/*
 !dist/.gitkeep
+!logs/.gitkeep
 logs/error.log
 node_modules
 pulse
