@@ -3,7 +3,7 @@ parent_image_arm=resin/raspberrypi3-debian:jessie
 parent_image_x86=node:6
 
 clean:
-	@sudo rm -rf node_modules
+	@sudo rm -rf node_modules && sudo rm -rf core && sudo rm -rf pulse* && sudo rm -rf node_modules
 
 install: dev-build-server
 

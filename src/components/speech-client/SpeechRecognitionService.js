@@ -33,11 +33,23 @@ class SpeechRecognitionService {
 	processRawdata(rawData) {
 		return new Promise((resolve, reject) => {
 			console.log("started recognizing audio...");
-			decoder.startUtt();
-			decoder.processRaw(rawData, false, false);
-			decoder.endUtt();
 
-			let result = decoder.hyp();
+			try {
+				if (!rawData) {
+					console.log('No mic data received');
+					resolve();
+				}
+
+				decoder.startUtt();
+				decoder.processRaw(rawData, false, false);
+				decoder.endUtt();
+
+				let result = decoder.hyp();
+			}
+			catch(err) {
+				logger.log(err);
+				reject(new Error("Failed to recognize mic input. Error: " + err));
+			}
 
 			if (null === result) {
 				reject(new Error("Failed to recognize mic input..."));

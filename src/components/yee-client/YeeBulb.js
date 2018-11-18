@@ -6,6 +6,7 @@
  */
 const YeelightSearch = require('yeelight-wifi');
 const config  = require("../../../config/config.json");
+const logger  = require("../../logger");
 
 class YeeBulb {
 
@@ -38,12 +39,18 @@ class YeeBulb {
 				console.log("Found bulb with id: " + deviceId);
 				deviceData = devices[key];
 
-				this.search.addLight(deviceData);
-				this.bulbInstance = this.search.getYeelightById(deviceData["ID"]);
+				this.search.addLight(deviceData)
+					.then((result) => {
+						this.bulbInstance = this.search.getYeelightById(deviceData["ID"]);
 
-				if (!this.bulbInstance) {
-					console.log("Failed to find bulb with provided id!");
-				}
+						if (!this.bulbInstance) {
+							console.log("Failed to find bulb with provided id: " + deviceData["ID"]);
+						}
+					})
+					.catch((err) => {
+						logger.log(err);
+						console.log(err);
+					});
 
 				break;
 			}
@@ -54,84 +61,120 @@ class YeeBulb {
 	 *
 	 */
 	setDeviceOn = () => {
-		this.bulbInstance.turnOn();
+		this.bulbInstance.turnOn().catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
 	};
 
 	/**
 	 *
 	 */
 	setDeviceOff = () => {
-		this.bulbInstance.turnOff();
+		this.bulbInstance.turnOff().catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
 	};
 
 	/**
 	 *
 	 */
 	setDeviceBright = () => {
-		this.bulbInstance.setBrightness(100);
+		this.bulbInstance.setBrightness(100).catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
 	};
 
 	/**
 	 *
 	 */
 	setDeviceDark = () => {
-		this.bulbInstance.setBrightness(10);
+		this.bulbInstance.setBrightness(10).catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
 	};
 
 	/**
 	 *
 	 */
 	setDeviceRed = () => {
-		this.bulbInstance.setRGB('#ff0000');
-	}
+		this.bulbInstance.setRGB('#ff0000').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
+	};
 
 	/**
 	 *
 	 */
 	setDeviceBlue = () => {
-		this.bulbInstance.setRGB('#0000ff');
-	}
+		this.bulbInstance.setRGB('#0000ff').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
+	};
 
 	/**
 	 *
 	 */
 	setDevicePink = () => {
-		this.bulbInstance.setRGB('#ff66ff');
-	}
+		this.bulbInstance.setRGB('#ff66ff').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
+	};
 
 	/**
 	 *
 	 */
 	setDeviceOrange = () => {
-		this.bulbInstance.setRGB('#ff8000');
-	}
+		this.bulbInstance.setRGB('#ff8000').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
+	};
 
 	/**
 	 *
 	 */
 	setDeviceYellow = () => {
-		this.bulbInstance.setRGB('#ffff00');
-	}
+		this.bulbInstance.setRGB('#ffff00').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
+	};
 
 	/**
 	 *
 	 */
 	setDeviceWhite = () => {
-		this.bulbInstance.setRGB('#ffffff');
-	}
+		this.bulbInstance.setRGB('#ffffff').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
+	};
 
 	/**
 	 *
 	 */
 	setDeviceGreen = () => {
-		this.bulbInstance.setRGB('#00ff00');
-	}
+		this.bulbInstance.setRGB('#00ff00').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
+	};
 
 	/**
 	 *
 	 */
 	setDevicePurple = () => {
-		this.bulbInstance.setRGB('#990099');
+		this.bulbInstance.setRGB('#990099').catch((err) => {
+			logger.log(err);
+			console.log(err);
+		});
 	}
 
 }

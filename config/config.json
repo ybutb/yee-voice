@@ -1,5 +1,4 @@
 {
-  "serviceApiKeyHash": "",
   "logPath": "logs/error.log",
   "speechServiceModelDir" : "config/pocketsphinx/compiled/",
   "projectPath": "/var/www/localhost/",

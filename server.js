@@ -21,6 +21,13 @@ process.on('warning', (warning) => {
 	console.warn(warning.stack);
 });
 
+process.on('uncaughtException', (err) => {
+	console.warn(err.name);
+	console.warn(err.message);
+	console.warn(err.code);
+	console.warn(err.stack);
+});
+
 app.listen(PORT);
 YeeController.init();
 
