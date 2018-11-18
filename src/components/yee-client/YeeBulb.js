@@ -39,18 +39,12 @@ class YeeBulb {
 				console.log("Found bulb with id: " + deviceId);
 				deviceData = devices[key];
 
-				this.search.addLight(deviceData)
-					.then((result) => {
-						this.bulbInstance = this.search.getYeelightById(deviceData["ID"]);
+				this.search.addLight(deviceData);
+				this.bulbInstance = this.search.getYeelightById(deviceData["ID"]);
 
-						if (!this.bulbInstance) {
-							console.log("Failed to find bulb with provided id: " + deviceData["ID"]);
-						}
-					})
-					.catch((err) => {
-						logger.log(err);
-						console.log(err);
-					});
+				if (!this.bulbInstance) {
+					console.log("Failed to find bulb with provided id!");
+				}
 
 				break;
 			}
