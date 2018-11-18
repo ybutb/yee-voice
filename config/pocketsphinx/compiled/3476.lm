@@ -1,4 +1,4 @@
-Language model created by QuickLM on Sun Nov 18 09:31:37 EST 2018
+Language model created by QuickLM on Sun Nov 18 09:40:22 EST 2018
 Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
 
 The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
@@ -7,58 +7,61 @@ The code that was used to produce this language model is available in Open Sourc
 Please visit http://www.speech.cs.cmu.edu/tools/ for more information
 
 The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
-This model based on a corpus of 14 sentences and 16 words
+This model based on a corpus of 15 sentences and 17 words
 
 \data\
-ngram 1=16
-ngram 2=28
-ngram 3=14
+ngram 1=17
+ngram 2=30
+ngram 3=15
 
 \1-grams:
 -0.7782 </s> -0.3010
 -0.7782 <s> -0.2218
--1.9243 BLUE -0.2218
--1.9243 BRIGHT -0.2218
--1.9243 BROTHER -0.2218
--1.9243 DARK -0.2218
--1.9243 GREEN -0.2218
--1.9243 LIGHT -0.2218
--1.9243 OFF -0.2218
--1.9243 ON -0.2218
--1.9243 ORANGE -0.2218
--1.9243 PINK -0.2218
--1.9243 PURPLE -0.2218
--1.9243 RED -0.2218
--1.9243 WHITE -0.2218
--1.9243 YELLOW -0.2218
+-1.9542 BLUE -0.2218
+-1.9542 BRIGHT -0.2218
+-1.9542 BROTHER -0.2218
+-1.9542 DARK -0.2218
+-1.9542 GREEN -0.2218
+-1.9542 LAMP -0.2218
+-1.9542 OFF -0.2218
+-1.9542 ON -0.2218
+-1.9542 ORANGE -0.2218
+-1.9542 PINK -0.2218
+-1.9542 PURPLE -0.2218
+-1.9542 RED -0.2218
+-1.9542 TORCH -0.2218
+-1.9542 WHITE -0.2218
+-1.9542 YELLOW -0.2218
 
 \2-grams:
--1.4472 <s> BLUE 0.0000
--1.4472 <s> BRIGHT 0.0000
--1.4472 <s> BROTHER 0.0000
--1.4472 <s> DARK 0.0000
--1.4472 <s> GREEN 0.0000
--1.4472 <s> LIGHT 0.0000
--1.4472 <s> OFF 0.0000
--1.4472 <s> ON 0.0000
--1.4472 <s> ORANGE 0.0000
--1.4472 <s> PINK 0.0000
--1.4472 <s> PURPLE 0.0000
--1.4472 <s> RED 0.0000
--1.4472 <s> WHITE 0.0000
--1.4472 <s> YELLOW 0.0000
+-1.4771 <s> BLUE 0.0000
+-1.4771 <s> BRIGHT 0.0000
+-1.4771 <s> BROTHER 0.0000
+-1.4771 <s> DARK 0.0000
+-1.4771 <s> GREEN 0.0000
+-1.4771 <s> LAMP 0.0000
+-1.4771 <s> OFF 0.0000
+-1.4771 <s> ON 0.0000
+-1.4771 <s> ORANGE 0.0000
+-1.4771 <s> PINK 0.0000
+-1.4771 <s> PURPLE 0.0000
+-1.4771 <s> RED 0.0000
+-1.4771 <s> TORCH 0.0000
+-1.4771 <s> WHITE 0.0000
+-1.4771 <s> YELLOW 0.0000
 -0.3010 BLUE </s> -0.3010
 -0.3010 BRIGHT </s> -0.3010
 -0.3010 BROTHER </s> -0.3010
 -0.3010 DARK </s> -0.3010
 -0.3010 GREEN </s> -0.3010
--0.3010 LIGHT </s> -0.3010
+-0.3010 LAMP </s> -0.3010
 -0.3010 OFF </s> -0.3010
 -0.3010 ON </s> -0.3010
 -0.3010 ORANGE </s> -0.3010
 -0.3010 PINK </s> -0.3010
 -0.3010 PURPLE </s> -0.3010
 -0.3010 RED </s> -0.3010
+-0.3010 TORCH </s> -0.3010
 -0.3010 WHITE </s> -0.3010
 -0.3010 YELLOW </s> -0.3010
 
@@ -68,13 +71,14 @@ ngram 3=14
 -0.3010 <s> BROTHER </s>
 -0.3010 <s> DARK </s>
 -0.3010 <s> GREEN </s>
--0.3010 <s> LIGHT </s>
+-0.3010 <s> LAMP </s>
 -0.3010 <s> OFF </s>
 -0.3010 <s> ON </s>
 -0.3010 <s> ORANGE </s>
 -0.3010 <s> PINK </s>
 -0.3010 <s> PURPLE </s>
 -0.3010 <s> RED </s>
+-0.3010 <s> TORCH </s>
 -0.3010 <s> WHITE </s>
 -0.3010 <s> YELLOW </s>
 

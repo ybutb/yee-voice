@@ -14,8 +14,8 @@ const modeldir = appConfig.speechServiceModelDir;
 let config = new ps.Decoder.defaultConfig();
 
 config.setString("-hmm", appConfig.projectPath + modeldir + "acoustic");
-config.setString("-dict", appConfig.projectPath + modeldir + "9445.dic");
-config.setString("-lm", appConfig.projectPath + modeldir + "9445.lm");
+config.setString("-dict", appConfig.projectPath + modeldir + "3476.dic");
+config.setString("-lm", appConfig.projectPath + modeldir + "3476.lm");
 config.setBoolean('-remove_noise', false);
 config.setBoolean('-remove_silence', false);
 config.setInt("-samprate", appConfig.micDevice.rate);

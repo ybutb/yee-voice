@@ -11,5 +11,8 @@ Existing vocabulary could be found at config/pocketphinx/commands.txt
 
 5. Or for Raspberry PI use `make docker-build-prod` to build the image for Raspberry PI 3 
  and `make run` to run the container afterwards.
+ 
 6. To increase recognition accuracy please check the `micDevice` properties in config to be in compliance
 with your microphone parameters.
+
+7. Recommended rate for included accoustic recognition model is 16000 Hz and 1 channel.

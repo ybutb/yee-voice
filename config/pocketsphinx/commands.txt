@@ -1,7 +1,8 @@
 brother
 off
 on
-light
+lamp
+torch
 blue
 red
 yellow

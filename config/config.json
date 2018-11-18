@@ -8,22 +8,7 @@
     "channels": 1
   },
   "voiceControl": {
-    "keyWord": "brother",
-    "commands": {
-      "lightOn": "turn on the light",
-      "lightOff": "turn off the light",
-      "lightColor": "make the light",
-      "blue": "blue",
-      "red": "red",
-      "yellow": "yellow",
-      "green": "green",
-      "white": "white",
-      "purple": "purple",
-      "pink": "pink",
-      "orange": "orange",
-      "bright": "bright",
-      "dark": "dark"
-    }
+    "keyWord": "brother"
   },
   "yeeClient": {
     "bulbs": [
@@ -36,7 +21,7 @@
       }
     ],
     "keywordIdMap":
-      {"light": "7C:49:EB:10:13:3E"},
+      {"torch": "7C:49:EB:10:13:3E"},
     "keywordFunctionMap": {
       "on": "setDeviceOn",
       "off": "setDeviceOff",
