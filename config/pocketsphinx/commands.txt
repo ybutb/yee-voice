@@ -1,7 +1,7 @@
-friend
-turn on the light
-turn off the light
-make the light
+brother
+off
+on
+light
 blue
 red
 yellow

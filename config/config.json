@@ -8,7 +8,7 @@
     "channels": 1
   },
   "voiceControl": {
-    "keyWord": "friend",
+    "keyWord": "brother",
     "commands": {
       "lightOn": "turn on the light",
       "lightOff": "turn off the light",
