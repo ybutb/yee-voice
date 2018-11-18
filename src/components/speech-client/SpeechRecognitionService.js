@@ -54,7 +54,6 @@ class SpeechRecognitionService {
 			if (null === result) {
 				reject(new Error("Failed to recognize mic input..."));
 			}
-			logger.log(result);
 
 			resolve(result.hypstr);
 		});
