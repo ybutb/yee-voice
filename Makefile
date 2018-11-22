@@ -17,6 +17,10 @@ docker-build-prod:
 
 build: docker-build-prod
 
+stop:
+	@docker-compose stop yee-voice-recognition-server
+	@docker-compose stop yee-voice-recognition-server-dev
+
 run:
 	@docker-compose up yee-voice-recognition-server
 
