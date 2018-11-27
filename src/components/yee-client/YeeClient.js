@@ -9,6 +9,10 @@ const YeeBulb = require('./YeeBulb');
 
 class YeeClient {
 
+	/**
+	 *
+	 * @type Array[{YeeBulb}]
+	 */
 	devices = [];
 
 	/**
@@ -50,10 +54,16 @@ class YeeClient {
 		}
 	}
 
+	/**
+	 * Returns initialized device from stack by mapped keyword.
+	 *
+	 * @param keyword
+	 * @return {*}
+	 */
 	getDeviceByKeyword(keyword) {
 		let deviceMapping = config.yeeClient.keywordIdMap;
 
-		if (!this.devices.hasOwnProperty(keyword)) {
+		if (!this.devices.hasOwnProperty(keyword) || this.devices[keyword].hasError()) {
 			this.devices[keyword] = new YeeBulb(deviceMapping[keyword]);
 		}
 

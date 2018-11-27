@@ -23,6 +23,11 @@ class YeeBulb {
 	bulbInstance;
 
 	/**
+	 * @type boolean
+	 */
+	error = false;
+
+	/**
 	 * Constructor.
 	 *
 	 * @returns {Promise}
@@ -56,8 +61,7 @@ class YeeBulb {
 	 */
 	setDeviceOn = () => {
 		this.bulbInstance.turnOn().catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -66,8 +70,7 @@ class YeeBulb {
 	 */
 	setDeviceOff = () => {
 		this.bulbInstance.turnOff().catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -76,8 +79,7 @@ class YeeBulb {
 	 */
 	setDeviceBright = () => {
 		this.bulbInstance.setBrightness(100).catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -86,8 +88,7 @@ class YeeBulb {
 	 */
 	setDeviceDark = () => {
 		this.bulbInstance.setBrightness(10).catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -96,8 +97,7 @@ class YeeBulb {
 	 */
 	setDeviceRed = () => {
 		this.bulbInstance.setRGB('#ff0000').catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -106,8 +106,7 @@ class YeeBulb {
 	 */
 	setDeviceBlue = () => {
 		this.bulbInstance.setRGB('#0000ff').catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -116,8 +115,7 @@ class YeeBulb {
 	 */
 	setDevicePink = () => {
 		this.bulbInstance.setRGB('#ff66ff').catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -136,8 +134,7 @@ class YeeBulb {
 	 */
 	setDeviceYellow = () => {
 		this.bulbInstance.setRGB('#ffff00').catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -146,8 +143,7 @@ class YeeBulb {
 	 */
 	setDeviceWhite = () => {
 		this.bulbInstance.setRGB('#ffffff').catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -156,8 +152,7 @@ class YeeBulb {
 	 */
 	setDeviceGreen = () => {
 		this.bulbInstance.setRGB('#00ff00').catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
 	};
 
@@ -166,9 +161,30 @@ class YeeBulb {
 	 */
 	setDevicePurple = () => {
 		this.bulbInstance.setRGB('#990099').catch((err) => {
-			logger.log(err);
-			console.log(err);
+			this.onErrorCallback(err);
 		});
+	};
+
+	/**
+	 * Error handling callback.
+	 *
+	 * @param error
+	 *
+	 * @return void
+	 */
+	onErrorCallback = (error) => {
+		logger.log(error);
+		console.log('Device connection error: ' + error);
+		this.error = true;
+	};
+
+	/**
+	 * Returns true whether device has some connection errors.
+	 *
+	 * @return {boolean}
+	 */
+	hasError = () => {
+		return this.error;
 	}
 
 }
