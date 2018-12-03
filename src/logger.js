@@ -38,6 +38,8 @@ const logger = () => {
      * @return void
 	 */
 	const writeToLogFile = (message) => {
+		let currentTime = Date.now();
+
 		fs.appendFile(path, '[' + currentTime + '] ' + JSON.stringify(message) + "\n", function (err) {
 			if (err) {
 				console.log(err);
